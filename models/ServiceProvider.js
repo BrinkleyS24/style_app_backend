@@ -1,14 +1,23 @@
 const mongoose = require('mongoose');
 
-const serviceProviderSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  phone: { type: String, required: true },
-  password: { type: String, required: true },
-  services: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Service' }],
-  availability: [String],
-  ratings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+const ServiceProviderSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
 });
 
-const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
-module.exports = ServiceProvider;
+module.exports = mongoose.model('ServiceProvider', ServiceProviderSchema);
